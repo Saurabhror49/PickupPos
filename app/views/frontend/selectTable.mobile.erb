@@ -1,0 +1,30 @@
+<div data-role="page" id="select-table">
+
+  <div data-role="header" data-position="fixed">
+    <%= link_to "Alle Tische", :showAllOrders %>
+    <h1>Neuer Tisch</h1>
+  </div>
+
+  <div data-role="content">
+     <div id="form-container">
+        <%= form_tag('/receiveSelectedTable', remote: true) do |f| %>
+
+            <fieldset>
+
+              <div data-role="fieldcontain" style="text-align: center;">
+                <%= label_tag :tableNumberField, "Nummer:", :id => "table_number_field_label" %>
+                <br/>
+                <%= phone_field_tag :tableNumber, "", :id => "table_number_field", :class => "ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-focus" %>
+              </div>
+
+            </fieldset>
+
+            <button type="submit" data-theme="a" name="submit" value="submit-value">Anlegen</button>
+            <!-- <a data-role="button" class="ui-btn-plain ui-btn ui-shadow ui-btn-corner-all ui-btn-up-c" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Los</span></span></a> -->
+
+        <% end %>
+     </div>
+  </div>
+</div>
+
+

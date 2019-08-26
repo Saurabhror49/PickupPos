@@ -1,0 +1,50 @@
+<div data-role="page" id="select-category">
+
+  <div data-role="header" data-position="fixed">
+    <%= link_to "Zurück", url_for(:controller => "frontend", :action => "showOrder", :order_id => 1) %>
+    <h2><div style="white-space: normal;">Kategorie wählen:</div></h2>
+  </div>
+
+
+  <div data-role="content">
+
+    <div class="ui-grid-a">
+      <% @categories.in_groups_of(2).each do |groupOfCategories| %>
+
+          <% unless groupOfCategories[0].nil? then %>
+              <div class="ui-block-a">
+              <a href="#select-product-of-category-<%= groupOfCategories[0].id %>" class="category-button" data-role="button">
+                <div style="padding: 15px; white-space: normal;"><%= groupOfCategories[0].caption %></div>
+
+              </a>
+              </div>
+          <% else %>
+              <div class="ui-block-a">
+              </div>
+          <% end %>
+
+          <% unless groupOfCategories[1].nil? then %>
+              <div class="ui-block-b">
+                <a href="#select-product-of-category-<%= groupOfCategories[1].id %>" class="category-button" data-role="button">
+                <div style="padding: 15px; white-space: normal;"><%= groupOfCategories[1].caption %></div>
+              </a>
+              </div>
+           <% else %>
+              <div class="ui-block-b">
+              </div>
+
+          <% end %>
+
+
+      <% end %>
+
+    </div>
+  </div>
+  <script type="text/javascript">
+      $('.category-button')
+              .button()
+              .each(getMaxWidth);
+      $('.category-button').width(greatestWidth);
+  </script>
+</div>
+
